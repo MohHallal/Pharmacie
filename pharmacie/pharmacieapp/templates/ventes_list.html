@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <title>Liste des ventes</title>
+</head>
+<body>
+    <h1>Liste des ventes</h1>
+
+    <table id="ventes-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Quantité</th>
+                <th>Client</th>
+                <th>Nom de médicament</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vente in ventes %}
+            <tr>
+                <td>{{ vente.Date_vente }}</td>
+                <td>{{ vente.Quantite_vendue }}</td>
+                <td>{{ vente.ID_client.Nom_client }} {{ vente.ID_client.Prenom_client }}</td>
+                <td>{{ vente.ID_medic.Nom_medic }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+<script>
+    $(document).ready(function() {
+        $('#ventes-table').DataTable(); // This line will enable sorting for your table
+    });
+</script>

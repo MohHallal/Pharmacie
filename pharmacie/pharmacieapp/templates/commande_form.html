@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles_forms.css">
+</head>
+<body>
+<div class="container">
+    <h1>Faire une commande</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="{{ form.Id_fournisseur.id_for_label }}">Le fournisseur:</label>
+        {{ form.Id_fournisseur }}
+        <br>
+
+        <label for="{{ form.ID_medic.id_for_label }}">Le médicament:</label>
+        {{ form.ID_medic }}
+        <br>
+
+        <label for="{{ form.Date_commande.id_for_label }}">La date de la commande (yyyy-mm-dd):</label>
+        {{ form.Date_commande }}
+        <br>
+        <label for="{{ form.Quantite_commande.id_for_label }}">La quantité:</label>
+        {{ form.Quantite_commande }}
+
+        <button type="submit">Faire la commande</button>
+    </form>
+
+    {% if form.errors %}
+    <div class="error-message">
+        <p>Invalid information! Please check your inputs.</p>
+    </div>
+    {% elif form.is_bound %}
+    <div class="success-message">
+        <p>Commande ajoutée avec succès!</p>
+    </div>
+    {% endif %}
+    </div>
+</body>
+</html>
